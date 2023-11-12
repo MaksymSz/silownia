@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"gym55.gym55","l":"Gym55Application"},{"p":"gym55.gym55","l":"User"},{"p":"gym55.gym55","l":"UserController"},{"p":"gym55.gym55","l":"UserkeyController"},{"p":"gym55.gym55","l":"UserRepository"}];updateSearchResults();
