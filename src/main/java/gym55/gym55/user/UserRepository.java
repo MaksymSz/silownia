@@ -1,4 +1,4 @@
-package gym55.gym55;
+package gym55.gym55.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -18,13 +18,15 @@ public class UserRepository {
     JdbcTemplate jdbcTemplate;
 
 
+
+
     /**
      * Gets user from database
      * @param id the id of user
      * @return the User object
      */
     public User getUser(int id){
-        return jdbcTemplate.queryForObject(String.format("Select u.userid, u.firstName, u.class, m.isValid from \"user\" u " +
+        return jdbcTemplate.queryForObject(String.format("Select u.userid, u.firstName, u.lastName,u.email, u.class, m.isValid from \"user\" u " +
                 "natural join membership m WHERE u.userid = %d", id), BeanPropertyRowMapper.newInstance(User.class));}
 
     /**
@@ -35,7 +37,7 @@ public class UserRepository {
      * @param class_ class of the user
      * @return the User object of the newly added User
      */
-    public User addUser(String firstName, String lastName, String email, String class_){
+    public User addUser(String firstName, String lastName, String email, String class_) throws RuntimeException{
         String userKey = UserkeyController.generateUserkey();
         if(!checkClassCorrectness(class_)){
             throw new RuntimeException("Invalid name of the class!");}
