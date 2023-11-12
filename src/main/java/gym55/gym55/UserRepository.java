@@ -1,4 +1,4 @@
-package gym55.gym55.user;
+package gym55.gym55;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * A class which provides methods to handle database operations about users
+ * Klasa obsługująca operacje na bazie danych związane z tabelą user
  */
 @Repository
 public class UserRepository {
@@ -21,21 +21,22 @@ public class UserRepository {
 
 
     /**
-     * Gets user from database
-     * @param id the id of user
-     * @return the User object
+     * pobiera dane wybranego użytkownika z bazy danych
+     * @param id id użytkownika
+     * @return pobrany wiersz z bazy danych w postaci obiektu klasy User
      */
     public User getUser(int id){
         return jdbcTemplate.queryForObject(String.format("Select u.userid, u.firstName, u.lastName,u.email, u.class, m.isValid from \"user\" u " +
                 "natural join membership m WHERE u.userid = %d", id), BeanPropertyRowMapper.newInstance(User.class));}
 
     /**
-     * Adds user to the database
-     * @param firstName first name of the user
-     * @param lastName last name of the user
-     * @param email email of the user
-     * @param class_ class of the user
-     * @return the User object of the newly added User
+     * Dodaje nowego użytkownika do bazy danych
+     * @param firstName imię użytkownika
+     * @param lastName nazwisko użytkownika
+     * @param email email użytkownika
+     * @param class_ klasa dostępu użytkownika
+     * @return dodany wiersz do tabeli w postaci obiektu klasy User
+     * @throws RuntimeException gdy klasa obiektu nie nalezy do zbioru {'user', 'trainer', 'admin'}
      */
     public User addUser(String firstName, String lastName, String email, String class_) throws RuntimeException{
         String userKey = UserkeyController.generateUserkey();
@@ -50,17 +51,17 @@ public class UserRepository {
 
 
     /**
-     * Gets the userkey of specific user
-     * @param id id of the user
-     * @return a userkey
+     * pobiera z bazy danych klucz użytkownika
+     * @param id id użytkownika
+     * @return klucz użytkownika w postaci obiektu String
      */
     public String getUserkey(int id){
         return jdbcTemplate.queryForObject(String.format("Select u.userkey from \"user\" u where u.userid = %d",id), BeanPropertyRowMapper.newInstance(String.class));
     }
 
     /**
-     * Updates the userkey of specific user
-     * @param id of the user
+     * generuje nowy klucz dla użytkownika
+     * @param id id użytkownika
      */
     public void updateUserkey(int id){
         String userkey = UserkeyController.generateUserkey();
