@@ -51,7 +51,7 @@ public class CourceController {
 
         Map<String, String> response = new HashMap<>();
         response.put("response", "Osiagnieto Limit");
-        response.put("response", "Zapisano");
+        //response.put("response", "Zapisano");
         return response;
 
         /*
