@@ -34,7 +34,7 @@ Endpointy
     + int trainingRoomid
     + int maxEnrolled;
 
-    text -> response; // sima
+    text -> response;
 
 10.
     id -> userId
