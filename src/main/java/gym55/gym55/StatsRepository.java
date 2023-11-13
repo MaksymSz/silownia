@@ -28,6 +28,8 @@ public class StatsRepository {
      * @param userid id użytkownika
      * @return listę obiektów Training, każdy oznaczający jeden trening użytkownika
      */
+    //TODO.txt Dorobić ograniczenie aby zwracał tylko treningi z ostatnich 7 dni i sortował, pierwsy rekord ma mieć najstarszą datę. ewentualnie zakres dat.
+    //  Też może zmiana na froncie, aby podawać zakres dat? jak nie, to tylko te 7 dni zmienić w SQL.
     public List<Training> getTrainings(int userid){
         return jdbcTemplate.query(String.format("Select startingtime,endingtime,trainingdate from training " +
                 "where userid=%d ", userid),BeanPropertyRowMapper.newInstance(Training.class));

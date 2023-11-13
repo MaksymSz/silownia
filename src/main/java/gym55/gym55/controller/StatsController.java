@@ -23,6 +23,7 @@ public class StatsController {
         Map<String, Integer> response = new HashMap<>();
         //response.put("inGym", statsRepository.getPeopleInGym());
 
+        //TODO.txt usunac test.
         //testowo
         response.put("inGym", 8);
         return response;

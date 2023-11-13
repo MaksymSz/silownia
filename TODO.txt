@@ -1,5 +1,8 @@
-Zrobione EndPointy razem z testami (w Controllers)
-5, 6,
+Stan Endpointow jesli chodzi o backend:
+1, 2, 3, 4 - nie zrobione / Nie ma jeszcze zapytać do DB / koncepcji.
+
+5, 6 - przetestowane
+
 7 - testy
 8 - testy
 9 - testy
@@ -12,14 +15,16 @@ Zrobione EndPointy razem z testami (w Controllers)
 String name;
 
 
-Max:
+//TODO.txt Max zmiany w endpointach:
 Endpointy
-W /courses zmień nazwę texxt na "description"
+6.
+    /courses text -> description
 
 7.
     /signin -> /enroll
     id -> userId
     text -> response
+
 9.
     id -> trenerId
     - trainer - usunąć
@@ -30,6 +35,7 @@ W /courses zmień nazwę texxt na "description"
     + int maxEnrolled;
 
     text -> response;
+
 10.
     id -> userId
     text -> response;
@@ -37,37 +43,7 @@ W /courses zmień nazwę texxt na "description"
 12.
     text -> description;
     + String response -> czy udało się dodać
-    Adam -> dodaj tytuł do bazy danych
 
-
-Adam:
-
--  Dodać pole w bazie danych do usera, termin ważności karnetu + metoda do przedłużania o 1 miesiąc (np kupon)
-
-- dodać / zamienić wyszukiwanie Kuponu po "zawartości kuponu"??? bo id to 1, 2, 3.... a przecież my sprawdzamy po wartości kuponu. po "nazwie"?
-    bo id to można strzelać i cały czas będzie.
-- dodać ewentualnie ilość użyć dla Kuponu? / Kupony jednorazowe?
-
-int actEnrolled;
-- W tablicy z Course dodać pole ilość aktualnie zapisanych, aby można było sprawdzić.
-    ewentualnie liczba pozostalych miejsc (łatwiej aby np wyświetlać w panelu ile miejsc zostalo)
-
-- Ogólnie w zapytaniach gdzie jest "czas" możesz dodać parametr duration czy cos w tym stylu, też jako string zapisywać, w tedy mi będzie łatwiej.
+//TODO.txt ADAM Ogólnie w zapytaniach gdzie jest "czas" możesz dodać parametr duration czy cos w tym stylu, też jako string zapisywać, w tedy mi będzie łatwiej.
+    Tak aby w Backendzie nie operować na czasach tylko przerzucać z DB do Frontu.
     Dodatkowo, jeśli data końcowa jest mniejsza, to do wyniku dodaj 24, np wszedł 23, wyszedł 1; 1-23 = -22;  -22+24 = 2h. zgadza sie.
-
-w getCourse i getCourses dodaj joina aby zwracało również imię trenera, tak będzie łatwiej chyba niż w backendzie robić oddzielne zapytanie aby uzyskać imię.
-
-- StatsRepositry -> getTrainings
-    Dorobić ograniczenie aby zwracał tylko treningi z ostatnich 7 dni i sortował, pierwsy rekord ma mieć najstarszą datę.
-
-
-- public Course addCourse - czy potrzebujemy zwracać kurs? nie wystarczy 0/1 czy się udało czy nie?
-    - zamiana ciągu zmiennych na obiekt klasy NewCourseRequest ?
-
-- getCourses - Czy kolejność pól ma znaczenie ? jeśli chodzi o rzutowanie na obiekt?
-
-- dodanie metody GetName -> tak aby w locie tworzyć (przy wyświetlaniu kurusu)
-
-w public (StatsRepository) w List<Training> getTrainings(int userid){} może dałoby radę zrzutować stringi czasu odrazu na daty "Javowe"?
-
-w ReportRepository addReport(String title, String description, String date) - uwzglednij tytuł (dodałem do funkcji, dodaj do zapytania).

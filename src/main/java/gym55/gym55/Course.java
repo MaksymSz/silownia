@@ -19,9 +19,9 @@ public class Course {
     String courseDate;
     int trainingRoomid;
     int maxEnrolled;
-    int actEnrolled;
+    int actEnrolled; //TODO.txt dodać do bazy danych to pole / podobne - ile jeszcze wolnych miejsc.
     int trainerid;
-    String name; // masz na mysli nazwe kursu?
+    String name; //TODO.txt masz na mysli nazwe kursu?
     String trainerName;
 }
 

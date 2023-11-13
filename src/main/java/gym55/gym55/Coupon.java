@@ -16,4 +16,5 @@ public class Coupon {
     int couponid;
     String name;
     float discount;
+    //TODO.txt dodać ewentualnie ilość użyć dla Kuponu? / Kupony jednorazowe?
 }

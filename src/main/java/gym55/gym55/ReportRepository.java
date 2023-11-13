@@ -28,6 +28,7 @@ public class ReportRepository {
      * @param date data zgłoszenia
      * @return dodany wiersz w postaci obiektu klasy Report
      */
+    //TODO.txt uwzglednij tytuł (dodałem do funkcji, dodaj do zapytania), który jest podawany przez usera który dodaje zgłoszenie.
     public Report addReport(String title, String description, String date){
         jdbcTemplate.execute(String.format("Insert into report (description, date) " +
                 "values (%s,%s)",description,date));

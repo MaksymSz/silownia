@@ -29,6 +29,9 @@ public class CourseRepository {
      * @return stworzony wiersz tabeli course w postaci obiektu klasy Course
      * @throws RuntimeException pusty obiekt klasy Course jeśli wybrana sala lub trener nie istnieje
      */
+    //TODO.txt dodaj aby zwracało również imie trenera - łatiwej w zapytaniu sql to zrobić, za pomocą joina niż w backendzie wywoływać kolejne zapytanie typu getUser(id)
+    //TODO.txt czy potrzebujemy zwracać kurs? nie wystarczy 0/1 czy się udało czy nie?
+    //TODO.txt zamiana ciągu zmiennych na obiekt klasy NewCourseRequest? Patrz CourseController / NewCourseRequest.
     public Course addCourse(int trainerid, String name, String description, String date, String startingTime, String endingTime, int trainingRoomid, int maxEnrolled) throws RuntimeException {
         try{
             jdbcTemplate.queryForObject(String.format("Select u.userid from \"user\" u where u.userid = %d", trainerid), BeanPropertyRowMapper.newInstance(int.class));
@@ -47,6 +50,7 @@ public class CourseRepository {
      * @param courseid id zajęć
      * @return szukane zajęcia w postaci obiektu klasy Course
      */
+    //TODO.txt Przetestować czy działa / jak po dodaniu nowych pól.
     public Course getCourse(int courseid){
         return jdbcTemplate.queryForObject(String.format("Select * from course where courseid=%d",courseid),BeanPropertyRowMapper.newInstance(Course.class));
     }

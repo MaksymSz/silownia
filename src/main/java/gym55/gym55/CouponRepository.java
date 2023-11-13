@@ -18,7 +18,7 @@ public class CouponRepository {
      * @param id idkuponu w bazie danych
      * @return wiersz kuponu z bazy danych w postaci obiektu klasy Coupon
      */
-
+    //TODO.txt dodać / zamienić wyszukiwanie Kuponu po "zawartości kuponu"??? bo id to 1, 2, 3.... a przecież my sprawdzamy po wartości kuponu. po "nazwie"? bo id to można strzelać i cały czas będzie.
     public Coupon getCoupon(int id){
         return jdbcTemplate.queryForObject(String.format("Select * from coupon where couponid = %d", id), BeanPropertyRowMapper.newInstance(Coupon.class));
     }

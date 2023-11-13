@@ -17,7 +17,8 @@ public class User {
     String email;
     String class_;
     String isValid;
-
+    //TODO.txt pole w bazie danych do usera, termin ważności karnetu
+    //TODO.txt metoda do przedłużania karnetu (kupon / płatność)
     public String getName() {
         return firstName + " " + lastName;
     }
