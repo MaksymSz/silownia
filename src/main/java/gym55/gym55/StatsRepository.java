@@ -55,4 +55,12 @@ public class StatsRepository {
         jdbcTemplate.execute(String.format("insert into training (endingtime) values (%s)" +
                 "where userid=%d and endingtime is null",time, userid));
     }
+
+    //TODO.txt Dorobić zapytania do endpointu /generate -> To jest wymagane:
+    //  from / to (String) : Daty włącznie.
+    //  ==================================
+    //  avgUsers (numer): Średnia liczba klientów na dzień
+    //  avgTime (numer): Średni czas spędzony przez jednego klienta w ciągu dnia
+    //  newUsers (numer): Liczba nowych klientów w okresie
+    //  users (numer): Liczba użytkowników z aktywnym karnetem
 }

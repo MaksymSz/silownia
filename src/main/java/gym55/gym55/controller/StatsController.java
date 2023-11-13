@@ -8,7 +8,7 @@ import request.GenerateStatsRequest;
 import response.Dashboard_IdResponse;
 import response.GenerateStatsResponse;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +43,7 @@ public class StatsController {
         return dashboardIdResponse;
     }
 
+    //TODO.txt endpoint /generate - brakuje w DB
     @ResponseBody
     public GenerateStatsResponse generateStats(GenerateStatsRequest generateStatsRequest){
         //statsRepository
