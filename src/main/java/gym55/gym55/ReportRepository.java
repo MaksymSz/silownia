@@ -28,7 +28,7 @@ public class ReportRepository {
      * @param date data zgłoszenia
      * @return dodany wiersz w postaci obiektu klasy Report
      */
-    public Report addReport(String description, String date){
+    public Report addReport(String title, String description, String date){
         jdbcTemplate.execute(String.format("Insert into report (description, date) " +
                 "values (%s,%s)",description,date));
         int id = jdbcTemplate.queryForObject("Select max(reportid) from report",BeanPropertyRowMapper.newInstance(int.class));

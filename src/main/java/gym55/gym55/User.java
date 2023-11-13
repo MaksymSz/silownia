@@ -17,4 +17,8 @@ public class User {
     String email;
     String class_;
     String isValid;
+
+    public String getName() {
+        return firstName + " " + lastName;
+    }
 }

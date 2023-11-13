@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,6 +52,15 @@ public class CourseRepository {
     }
 
     /**
+     * MS
+     * Funkcja dodana w celu zwrocenia wszystkich.
+     * @return wszystkie zajecia
+     */
+    public List<Course> getCourses(){
+        return jdbcTemplate.query("Select * from course",BeanPropertyRowMapper.newInstance(Course.class));
+    }
+
+    /**
      * Funkcja zapisująca klienta na zajęcia
      * @param userid id klienta
      * @param courseid id zajęć
@@ -58,7 +68,7 @@ public class CourseRepository {
      * @return łańcuch znaków "Zapisano" gdy zapisanie się powiedzie
      */
     public String enroll(int userid, int courseid){
-        //TODO check if enrolled != maxEnrolled
+        //TODO.txt check if enrolled != maxEnrolled
         jdbcTemplate.execute(String.format("Insert into enrolled values(%d,%d)",courseid, userid));
         return "Zapisano";
     }
