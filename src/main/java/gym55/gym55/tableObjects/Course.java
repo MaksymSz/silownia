@@ -1,4 +1,4 @@
-package gym55.gym55;
+package gym55.gym55.tableObjects;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,9 +18,9 @@ public class Course {
     String courseDate;
     int trainingRoomid;
     int maxEnrolled;
-    int actEnrolled; //TODO.txt dodać do bazy danych to pole / podobne - ile jeszcze wolnych miejsc.
+    int actEnrolled;
     int trainerid;
-    String name; //TODO.txt masz na mysli nazwe kursu?
+    String name;
     String trainerName;
 }
 

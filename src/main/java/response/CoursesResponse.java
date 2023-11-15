@@ -1,5 +1,5 @@
 package response;
-import gym55.gym55.Course;
+import gym55.gym55.tableObjects.Course;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;

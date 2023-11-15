@@ -1,14 +1,12 @@
 package gym55.gym55.controller;
 
-import gym55.gym55.CouponRepository;
-import gym55.gym55.Course;
-import gym55.gym55.CourseRepository;
-import gym55.gym55.UserRepository;
+import gym55.gym55.tableObjects.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import request.EnrollRequest;
 import request.NewCourseRequest;
 import response.CoursesResponse;
+import gym55.gym55.repository.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

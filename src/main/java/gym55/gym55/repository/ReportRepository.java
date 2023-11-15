@@ -1,5 +1,6 @@
-package gym55.gym55;
+package gym55.gym55.repository;
 
+import gym55.gym55.tableObjects.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

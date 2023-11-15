@@ -1,5 +1,7 @@
-package gym55.gym55;
+package gym55.gym55.repository;
 
+import gym55.gym55.tableObjects.Course;
+import gym55.gym55.tableObjects.Enrolled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -45,7 +47,7 @@ public class CourseRepository {
     }
 
     /**
-     * Funkcja pobierają wiersz tabeli course z bazy danych w postaci obiektu klasy Course
+     * Funkcja pobierająca wiersz tabeli course z bazy danych w postaci obiektu klasy Course
      * @param courseid id zajęć
      * @return szukane zajęcia w postaci obiektu klasy Course
      */

@@ -1,10 +1,11 @@
-package gym55.gym55;
+package gym55.gym55.repository;
 
+import gym55.gym55.UserkeyController;
+import gym55.gym55.tableObjects.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,9 +17,6 @@ import java.util.List;
 public class UserRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
-
-
-
 
     /**
      * pobiera dane wybranego użytkownika z bazy danych

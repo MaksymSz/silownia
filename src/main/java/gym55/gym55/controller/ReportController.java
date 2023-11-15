@@ -1,12 +1,12 @@
 package gym55.gym55.controller;
 
-import gym55.gym55.Report;
-import gym55.gym55.ReportRepository;
+import gym55.gym55.tableObjects.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import request.ReportProblemRequest;
+import gym55.gym55.repository.*;
 
 import java.util.HashMap;
 import java.util.Map;

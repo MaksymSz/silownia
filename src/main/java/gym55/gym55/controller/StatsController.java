@@ -1,12 +1,12 @@
 package gym55.gym55.controller;
 
-import gym55.gym55.StatsRepository;
-import gym55.gym55.Training;
+import gym55.gym55.tableObjects.Training;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import request.GenerateStatsRequest;
 import response.Dashboard_IdResponse;
 import response.GenerateStatsResponse;
+import gym55.gym55.repository.*;
 
 
 import java.util.HashMap;

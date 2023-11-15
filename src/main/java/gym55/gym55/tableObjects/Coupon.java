@@ -1,4 +1,4 @@
-package gym55.gym55;
+package gym55.gym55.tableObjects;
 
 
 import lombok.AllArgsConstructor;

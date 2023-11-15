@@ -1,11 +1,10 @@
 package gym55.gym55.controller;
 
-import gym55.gym55.CouponRepository;
-import gym55.gym55.User;
-import gym55.gym55.UserRepository;
+import gym55.gym55.tableObjects.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import request.UseCuponRequest;
+import gym55.gym55.repository.*;
 
 import java.util.HashMap;
 import java.util.Map;
