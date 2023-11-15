@@ -11,9 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Report {
-    int reportid;
+    int reportId;
     String description;
-    String reportdate;
+    String reportDate;
 }

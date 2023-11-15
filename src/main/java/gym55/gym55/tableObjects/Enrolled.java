@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Enrolled {
-    int userid;
-    int trainingroomid;
+    int userId;
+    int trainingRoomId;
 }

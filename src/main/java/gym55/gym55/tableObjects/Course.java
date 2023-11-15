@@ -18,8 +18,8 @@ public class Course {
     String courseDate;
     int trainingRoomid;
     int maxEnrolled;
-    int actEnrolled;
-    int trainerid;
+    int actEnrolled; //TODO: zmienić strukturę zapytań z CourseRepository
+    int trainerId;
     String name;
     String trainerName;
 }

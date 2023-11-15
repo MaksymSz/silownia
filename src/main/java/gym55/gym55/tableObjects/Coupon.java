@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class Coupon {
-    int couponid;
+    int couponId;
     String name;
-    float discount;
-    //TODO.txt dodać ewentualnie ilość użyć dla Kuponu? / Kupony jednorazowe?
+    int value;
+    //TODO dostosować do nowej wersji tabeli coupon
 }
