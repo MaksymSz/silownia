@@ -3,32 +3,32 @@
   <ID>JAVA</ID>
   <OriginalElement>/home/mateusz/IdeaProjects/silownia_wspolna/src/main/java</OriginalElement>
   <nodes>
-    <node x="1903.5024778761062" y="1563.9662300884956">gym55.gym55.tableObjects.Report</node>
+    <node x="2165.9353837742715" y="2029.865309895817">gym55.gym55.tableObjects.Report</node>
     <node x="338.50000000000006" y="742.0">gym55.gym55.controller.CourceController</node>
-    <node x="1866.5024778761062" y="1257.8247079646014">gym55.gym55.tableObjects.Training</node>
+    <node x="1847.3178240105844" y="1665.8653098958173">gym55.gym55.tableObjects.Training</node>
     <node x="1687.581274336283" y="789.0">gym55.gym55.controller.ReportController</node>
-    <node x="886.3217345132744" y="1470.9554690265486">response.GenerateStatsResponse</node>
-    <node x="-484.997646017699" y="2451.261734513275">response.CoursesResponse</node>
-    <node x="2071.3564601769904" y="1696.174053097345">gym55.gym55.tableObjects.Course</node>
-    <node x="136.06311504424798" y="2019.0617345132748">request.NewCourseRequest</node>
-    <node x="-172.0" y="1442.6991150442475">response.Dashboard_IdResponse</node>
-    <node x="1903.5024778761062" y="1510.4157876106192">gym55.gym55.tableObjects.Coupon</node>
-    <node x="1512.1430088495574" y="1458.5861946902655">gym55.gym55.Gym55Application</node>
-    <node x="1694.5024778761062" y="1634.231646017699">gym55.gym55.tableObjects.Enrolled</node>
+    <node x="671.4147487175908" y="1665.8653098958173">response.GenerateStatsResponse</node>
+    <node x="-101.70656283185838" y="1665.8653098958173">response.CoursesResponse</node>
+    <node x="1072.0827044832104" y="1665.8653098958173">gym55.gym55.tableObjects.Course</node>
+    <node x="-101.70656283185838" y="993.1243893805308">request.NewCourseRequest</node>
+    <node x="319.74679295197126" y="1665.8653098958173">response.Dashboard_IdResponse</node>
+    <node x="2166.4353837742715" y="1665.8653098958173">gym55.gym55.tableObjects.Coupon</node>
+    <node x="1532.0382054508407" y="2265.8653098958175">gym55.gym55.Gym55Application</node>
+    <node x="1847.3178240105844" y="2079.8653098958175">gym55.gym55.tableObjects.Enrolled</node>
     <node x="903.10323539823" y="398.87561061946906">gym55.gym55.repository.CouponRepository</node>
     <node x="744.5" y="720.0">gym55.gym55.controller.UserController</node>
-    <node x="-82.0" y="1728.480424778761">request.EnrollRequest</node>
-    <node x="-127.0" y="1120.6991150442475">response.UnitStat</node>
+    <node x="1306.9106669829155" y="993.1243893805308">request.EnrollRequest</node>
+    <node x="364.74679295197126" y="2000.8148630484627">response.UnitStat</node>
     <node x="-101.70656283185838" y="398.87561061946906">gym55.gym55.repository.CourseRepository</node>
-    <node x="-483.497646017699" y="2037.2617345132749">response.UnitCourseResponse</node>
-    <node x="361.8046017699114" y="1738.5406725663718">request.ReportProblemRequest</node>
+    <node x="-98.70656283185838" y="2000.8148630484627">response.UnitCourseResponse</node>
+    <node x="337.1977446218351" y="993.1243893805308">request.ReportProblemRequest</node>
     <node x="1751.581274336283" y="458.1737486725664">gym55.gym55.repository.ReportRepository</node>
     <node x="85.90256528126741" y="783.3156581139192">gym55.gym55.UserkeyController</node>
-    <node x="592.1924247787612" y="1711.5220530973452">request.UseCuponRequest</node>
+    <node x="1030.0063595292222" y="993.1243893805308">request.UseCuponRequest</node>
     <node x="1301.2780047124647" y="458.1737486725664">gym55.gym55.repository.StatsRepository</node>
-    <node x="1721.2786548672566" y="1309.344778761062">gym55.gym55.tableObjects.User</node>
+    <node x="1479.2002642468974" y="1665.8653098958173">gym55.gym55.tableObjects.User</node>
     <node x="373.00000000000006" y="398.87561061946906">gym55.gym55.repository.UserRepository</node>
-    <node x="848.1762831858407" y="1754.6058053097343">request.GenerateStatsRequest</node>
+    <node x="707.1020520755286" y="993.1243893805308">request.GenerateStatsRequest</node>
     <node x="1200.7780047124647" y="743.0">gym55.gym55.controller.StatsController</node>
   </nodes>
   <notes />
@@ -53,6 +53,8 @@
     </edge>
     <edge source="response.CoursesResponse" target="response.UnitCourseResponse" relationship="TO_MANY">
       <point x="0.0" y="-124.5" />
+      <point x="72.79343716814162" y="1852.6070451523267" />
+      <point x="74.29343716814162" y="1852.6070451523267" />
       <point x="0.0" y="182.0" />
     </edge>
     <edge source="gym55.gym55.controller.ReportController" target="gym55.gym55.repository.ReportRepository" relationship="TO_ONE">
@@ -82,7 +84,7 @@
       <point x="0.0" y="54.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.8796093022208006" showDependencies="true" x="1684.5079960218027" y="647.9295771010993" />
+  <settings layout="Hierarchic" zoom="1.0995116277760013" showDependencies="true" x="1432.9380538994174" y="710.4868842044589" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>
