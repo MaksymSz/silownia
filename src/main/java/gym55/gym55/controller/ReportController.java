@@ -26,7 +26,7 @@ public class ReportController {
                 reportProblemRequest.getDescription(),
                 reportProblemRequest.getDate());
 
-        if(report.getReportid() < 0){
+        if(report.getReportId() < 0){
             response.put("request", "Dodano");
         } else{
             response.put("request", "Nie udalo sie dodac");
