@@ -14,7 +14,7 @@ import java.util.List;
 public class Dashboard_IdResponse {
     List<UnitStat> stats = new ArrayList<>();
     public void addStat(Training training){
-        stats.add(new UnitStat(training.getTrainingDate(), training.getDuration()));
+        stats.add(new UnitStat(training.getDate(), training.getTime()));
     }
 }
 

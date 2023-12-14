@@ -27,16 +27,12 @@ public class CouponRepository {
     /**
      * Funkcja dodająca kupon do bazy danych
      * @param name nazwa kuponu
-     * @param discount wartość rabatu (wartości od 0 do 1)
+     * @param value wartość rabatu (wartości od 0 do 1)
      * @return dodany do bazy danych kupon w postaci obiektu klasy coupon
-     * @throws RuntimeException jeśli rabat nie jest wartością między 0 a 1
      */
-    public Coupon addCoupon(String name, float discount) throws RuntimeException{
-        if(discount > 1 | discount < 0) {
-            throw new RuntimeException("Discount has to be between 0 and 1");
-        }
+    public Coupon addCoupon(String name, float value){
         jdbcTemplate.execute(String.format("insert into coupon(name,discount)" +
-                "values (%s, %f)",name, discount));
+                "values (%s, %f)",name, value));
         int id = jdbcTemplate.queryForObject("Select max(couponid) from coupon", BeanPropertyRowMapper.newInstance(int.class));
         return getCoupon(id);
         }

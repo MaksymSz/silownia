@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Training {
-    String startingTime;
-    String endingTime; // czy potrzebujemy konca?
-    String trainingDate;
-    String duration;
+    String date;
+    String time;
 }

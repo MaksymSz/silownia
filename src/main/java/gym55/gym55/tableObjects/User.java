@@ -11,12 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    int userId;
+
     String firstName;
+    String isValid;
+    int userId;
+    String class_;
+    String token;
     String lastName;
     String email;
-    String class_;
-    String isValid;
+    String login;
+    String password;
     //TODO.txt pole w bazie danych do usera, termin ważności karnetu
     //TODO.txt metoda do przedłużania karnetu (kupon / płatność)
     public String getName() {

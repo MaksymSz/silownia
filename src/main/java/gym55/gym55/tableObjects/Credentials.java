@@ -5,14 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Klasa emulująca jeden wiersz tabeli coupon z bazy danych
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Coupon {
-    int couponId;
-    String name;
-    int value;}
+public class Credentials {
+    String login;
+    String password;
+}

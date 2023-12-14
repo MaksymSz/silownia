@@ -1,6 +1,7 @@
 package gym55.gym55.repository;
 
 import gym55.gym55.UserkeyController;
+import gym55.gym55.tableObjects.Credentials;
 import gym55.gym55.tableObjects.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -24,8 +25,14 @@ public class UserRepository {
      * @return pobrany wiersz z bazy danych w postaci obiektu klasy User
      */
     public User getUser(int id){
-        return jdbcTemplate.queryForObject(String.format("Select u.userid, u.firstName, u.lastName,u.email, u.class, m.isValid from \"user\" u " +
+        return jdbcTemplate.queryForObject(String.format("Select u.firstName, m.isValid, u.userid, u.class, 'abc321'  from \"user\" u " +
                 "natural join membership m WHERE u.userid = %d", id), BeanPropertyRowMapper.newInstance(User.class));}
+
+    public int checkLogin(Credentials credentials){
+        return jdbcTemplate.queryForObject(String.format("SELECT u.userid FROM \"user\" u WHERE u.login = '%s' and u.password = '%s'", credentials.getLogin(), credentials.getPassword()),
+                Integer.class);
+    }
+
 
     /**
      * Dodaje nowego użytkownika do bazy danych

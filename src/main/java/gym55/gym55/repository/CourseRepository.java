@@ -53,7 +53,14 @@ public class CourseRepository {
      */
     //TODO.txt Przetestować czy działa / jak po dodaniu nowych pól.
     public Course getCourse(int courseid){
-        return jdbcTemplate.queryForObject(String.format("Select * from course where courseid=%d",courseid),BeanPropertyRowMapper.newInstance(Course.class));
+        return jdbcTemplate.queryForObject(String.format(
+                "Select courseid, name, description, startingtime, endingtime, coursedate, trainingroomid, maxenrolled, trainerid," +
+                        "(select count(*) from enrolled where courseid = %d) as actEnrolled," +
+                        "firstname as trainerName" +
+                        "from course" +
+                        "natural join user" +
+                        "where courseid = %d;",
+                courseid, courseid),BeanPropertyRowMapper.newInstance(Course.class));
     }
 
     /**

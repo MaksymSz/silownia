@@ -12,15 +12,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Course {
     int courseId;
+    String name;
     String description;
     String startingTime;
     String endingTime;
     String courseDate;
     int trainingRoomid;
     int maxEnrolled;
-    int actEnrolled; //TODO: zmienić strukturę zapytań z CourseRepository
     int trainerId;
-    String name;
+    int actEnrolled; //TODO: zmienić strukturę zapytań z CourseRepository
     String trainerName;
 }
 
