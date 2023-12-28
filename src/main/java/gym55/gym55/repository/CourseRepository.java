@@ -56,9 +56,9 @@ public class CourseRepository {
         return jdbcTemplate.queryForObject(String.format(
                 "Select courseid, name, description, startingtime, endingtime, coursedate, trainingroomid, maxenrolled, trainerid," +
                         "(select count(*) from enrolled where courseid = %d) as actEnrolled," +
-                        "firstname as trainerName" +
+                        "u.firstname as trainerName" +
                         "from course" +
-                        "natural join user" +
+                        "left join user u using(userid)" +
                         "where courseid = %d;",
                 courseid, courseid),BeanPropertyRowMapper.newInstance(Course.class));
     }

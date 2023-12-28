@@ -1,14 +1,15 @@
-package gym55.gym55.tableObjects;
-
+package request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Credentials {
+@NoArgsConstructor
+public class RegisterRequest {
     String email;
     String password;
+    String name;
+    String surname;
 }

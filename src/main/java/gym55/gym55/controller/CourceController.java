@@ -27,17 +27,13 @@ public class CourceController {
      *
      * @return CoursesResponse
      */
+    //todo problem z imieniem trenera - null
     @GetMapping("/courses")
     public CoursesResponse getCourses(){
         CoursesResponse coursesResponse = new CoursesResponse();
 
-        // prawidlowo
-        //List<Course> courseList = courseRepository.getCourses();
+        List<Course> courseList = courseRepository.getCourses();
 
-        //testowo
-        List<Course> courseList = new ArrayList<>();
-        courseList.add(new Course(1, "Yoga", "Kurs podstawowy zajęć yoga.", "10:00", "12:00", "2023-01-07", 12, 20, 0, 5,"Magda"));
-        courseList.add(new Course(2, "Pilates", "Kurs podstawowy pilatesu.", "12:00", "14:00", "2023-01-08", 11, 20, 0, 7,"Ala"));
         for(Course c : courseList){
             coursesResponse.addCourse(c);
         }

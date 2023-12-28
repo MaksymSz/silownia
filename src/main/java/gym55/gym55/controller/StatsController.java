@@ -2,6 +2,7 @@ package gym55.gym55.controller;
 
 import gym55.gym55.tableObjects.Training;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import request.GenerateStatsRequest;
 import response.Dashboard_IdResponse;
@@ -21,27 +22,14 @@ public class StatsController {
     @GetMapping("/ingym")
     public Map<String, Integer> inGym(){
         Map<String, Integer> response = new HashMap<>();
-        //response.put("inGym", statsRepository.getPeopleInGym());
-
-        //TODO.txt usunac test.
-        //testowo
-        response.put("inGym", 8);
+        response.put("inGym", statsRepository.getPeopleInGym());
         return response;
     }
 
-    // tablica krotek. pierwszy element to trening który był najdawniej.
-    @GetMapping("dashboard/{id}")
-    @ResponseBody
-    public Dashboard_IdResponse getTrainingsStat(@PathVariable("id") int id){
-        Dashboard_IdResponse dashboardIdResponse = new Dashboard_IdResponse();
-        List<Training> trainings = statsRepository.getTrainings(id);
-
-        for (Training training : trainings) {
-            dashboardIdResponse.addStat(training);
-        }
-
-        return dashboardIdResponse;
-    }
+    @GetMapping("/dashboard/{id}")
+    public ResponseEntity<HashMap<Object, Object>> getDashboard(@PathVariable("id") int id){
+        List<Training> data = statsRepository.getTrainings(id);
+        return ResponseEntity.ok().body(new HashMap<>(){{put("data", data);}});}
 
     //TODO.txt endpoint /generate - brakuje w DB
     @ResponseBody

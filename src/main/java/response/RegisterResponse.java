@@ -1,5 +1,4 @@
-package gym55.gym55.tableObjects;
-
+package response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Credentials {
-    String email;
-    String password;
+public class RegisterResponse {
+    String name;
+    String gymPass;
+    int id;
+    String role;
+    String token;
 }

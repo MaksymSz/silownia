@@ -21,7 +21,7 @@ public class StatsRepository {
      * @return liczba osób na siłowni w postaci obiektu int
      */
     public int getPeopleInGym(){
-        return jdbcTemplate.queryForObject("Select count(*) from training where endingtime is null", BeanPropertyRowMapper.newInstance(int.class));
+        return jdbcTemplate.queryForObject("Select count(*) from training where endingtime is null", Integer.class);
     }
 
     /**
