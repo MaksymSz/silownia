@@ -2,12 +2,15 @@ package gym55.gym55.controller;
 
 import gym55.gym55.tableObjects.Course;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import request.EnrollRequest;
 import request.NewCourseRequest;
 import response.CoursesResponse;
 import gym55.gym55.repository.*;
+import response.TextResponse;
 
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +19,7 @@ import java.util.Map;
 @RestController
 public class CourceController {
     @Autowired
-    CouponRepository couponRepository; // ???
+    CouponRepository couponRepository;
     @Autowired
     CourseRepository courseRepository;
     @Autowired
@@ -27,70 +30,39 @@ public class CourceController {
      *
      * @return CoursesResponse
      */
-    //todo problem z imieniem trenera - null
     @GetMapping("/courses")
-    public CoursesResponse getCourses(){
+    public CoursesResponse getCourses() {
         CoursesResponse coursesResponse = new CoursesResponse();
 
         List<Course> courseList = courseRepository.getCourses();
 
-        for(Course c : courseList){
+        for (Course c : courseList) {
             coursesResponse.addCourse(c);
         }
         return coursesResponse;
     }
 
-    @GetMapping("/enroll")
-    public Map<String, String> enrollUser(EnrollRequest enrollRequest){
-
-        Map<String, String> response = new HashMap<>();
-        response.put("response", "Osiagnieto Limit");
-        //response.put("response", "Zapisano");
-        return response;
-
-        /*
-        int userId = enrollRequest.getUserId();
-        int courseId = enrollRequest.getCourseId();
-
-        Map<String, String> response = new HashMap<>();
-        Course course = courseRepository.getCourse(courseId);
-
-        if(course.getActEnrolled() < course.getMaxEnrolled()) {
-            response.put("response", courseRepository.enroll(userId, courseId));
-        } else {
-            response.put("response", "Osiagnieto Limit");
-        }
-        return response;
-        */
-
+    @CrossOrigin
+    @PutMapping("/enroll")
+    @ResponseBody
+    public ResponseEntity<TextResponse> enrollUser(@RequestBody EnrollRequest enrollRequest) {
+        String response = courseRepository.enroll(enrollRequest.getUserId(), enrollRequest.getCourseId());
+        return ResponseEntity.ok().body(new TextResponse(response));
     }
 
-    @GetMapping("/newcourse")
+    @CrossOrigin
+    @PostMapping("/newcourse")
     @ResponseBody
-    public Map<String, String> newcCurse(NewCourseRequest newCourseRequest){
-
-        Map<String, String> response = new HashMap<>();
-
-        // dodac obsluge gdyby cos wywalilo???
-        Course course =  courseRepository.addCourse(
-                newCourseRequest.getTrenerId(),
+    public ResponseEntity<TextResponse> newCourse(@RequestBody NewCourseRequest newCourseRequest) {
+        Course course = courseRepository.addCourse(
+                newCourseRequest.getTrainerid(),
                 newCourseRequest.getTitle(),
                 newCourseRequest.getDescription(),
-                newCourseRequest.getDate(),
+                newCourseRequest.getWeekday(),
                 newCourseRequest.getStartingTime(),
                 newCourseRequest.getEndingTime(),
                 newCourseRequest.getTrainingRoomid(),
                 newCourseRequest.getMaxEnrolled());
-        if(!course.equals(new Course())){
-            response.put("response", "Dodano");
-        } else{
-            response.put("response", "Nie udalo sie");
-        }
-        return response;
+        return ResponseEntity.ok().body(new TextResponse("Dodano kurs"));
     }
-
-    @GetMapping("/enroll1")
-    @ResponseBody
-    public Boolean enroll(){return true;}
-
 }

@@ -41,6 +41,6 @@ public class CouponRepository {
 
 
     public int checkCoupon(String name) {
-        return jdbcTemplate.queryForObject(String.format("Select count(*) from coupon where name = %s", name), BeanPropertyRowMapper.newInstance(Integer.class));
+        return jdbcTemplate.queryForObject(String.format("Select count(*) from coupon where name = '%s'", name), Integer.class);
     }
 }

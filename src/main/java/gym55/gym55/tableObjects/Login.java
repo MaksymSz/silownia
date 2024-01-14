@@ -16,11 +16,10 @@ public class Login {
 
     public Login(User user, String token){
         this.name = user.getFirstName();
-        this.gymPass = user.getIsValid();
-        this.role = user.getClass_();
+        this.gymPass = "2024-11-10";
+        this.role = "client";
         this.id = user.getUserId();
         this.token = token;
-
     }
 }
 

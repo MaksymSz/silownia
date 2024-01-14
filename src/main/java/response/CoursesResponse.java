@@ -18,7 +18,7 @@ import java.util.List;
 public class CoursesResponse {
     List<UnitCourseResponse> courses = new ArrayList<>();
     public void addCourse(Course course){
-        courses.add(new UnitCourseResponse(course.getCourseId(), course.getName(), course.getTrainerName(), course.getDescription()));
+        courses.add(new UnitCourseResponse(course.getCourseId(), course.getTitle(), course.getTrainer(), course.getDescription()));
     }
 }
 
@@ -29,5 +29,5 @@ class UnitCourseResponse {
     int courseID;
     String title;
     String trainer;
-    String text;
+    String description;
 }

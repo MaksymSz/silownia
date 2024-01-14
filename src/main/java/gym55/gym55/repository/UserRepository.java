@@ -25,7 +25,7 @@ public class UserRepository {
      * @return pobrany wiersz z bazy danych w postaci obiektu klasy User
      */
     public User getUser(int id){
-        return jdbcTemplate.queryForObject(String.format("Select u.firstName, m.isValid, u.userid, u.class, 'abc321'  from \"user\" u " +
+        return jdbcTemplate.queryForObject(String.format("Select u.firstName, '2024-11-10' as isValid, u.userid, u.class_, 'abc321'  from \"user\" u " +
                 "natural join membership m WHERE u.userid = %d", id), BeanPropertyRowMapper.newInstance(User.class));}
 
     public int checkLogin(Credentials credentials){
@@ -47,7 +47,7 @@ public class UserRepository {
         String userKey = UserkeyController.generateUserkey();
         if(!checkClassCorrectness(class_)){
             throw new RuntimeException("Invalid name of the class!");}
-        jdbcTemplate.execute(String.format("Insert into \"user\" (firstName, lastName, login, password, class, userkey)" +
+        jdbcTemplate.execute(String.format("Insert into \"user\" (firstname, lastname, login, password, class_, userkey)" +
                 " values ('%s', '%s', '%s', '%s', '%s', '%s')", firstName, lastName, login, password, class_, userKey));
         addMembershipForNewUser();
         int id = getNewUserid();
@@ -76,8 +76,8 @@ public class UserRepository {
     }
 
     public void extendMembership(int id){
-        jdbcTemplate.execute(String.format("Update membership" +
-                "SET expirationdate = expirationdate + interval '1 month' " +
+        jdbcTemplate.execute(String.format("Update membership " +
+                "SET expirationdate = (expirationdate + interval '1 month') " +
                 "WHERE userid = %d;", id));
     }
 

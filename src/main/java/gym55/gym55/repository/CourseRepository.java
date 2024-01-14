@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import response.CoursesResponse;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 
 /**
@@ -40,9 +42,10 @@ public class CourseRepository {
         catch(Exception IncorrectResultSizeDataAccessException){
             return new Course();
         }
-        jdbcTemplate.execute(String.format("Insert into course(trainerid, name, description, coursedate, startingtime, endingtime, trainingroomid, maxenrolled)" +
-                "values (%d,%s,%s,%s,%s,%s,%d,%d)", trainerid, name, description, date, startingTime, endingTime, trainingRoomid, maxEnrolled));
-        int id = jdbcTemplate.queryForObject("Select max(courseid) from course", BeanPropertyRowMapper.newInstance(int.class));
+        int id = jdbcTemplate.queryForObject("Select max(courseid) from course", Integer.class);
+        jdbcTemplate.execute(String.format("Insert into course(id, trainerid, name, description, weekday, startingtime, endingtime, trainingroomid, maxenrolled)" +
+                "values (%d,%d,%s,%s,%s,%s,%s,%d,%d)", id+1 ,trainerid, name, description, date, startingTime, endingTime, trainingRoomid, maxEnrolled));
+
         return getCourse(id);
     }
 
@@ -69,7 +72,7 @@ public class CourseRepository {
      * @return wszystkie zajecia
      */
     public List<Course> getCourses(){
-        return jdbcTemplate.query("Select * from course",BeanPropertyRowMapper.newInstance(Course.class));
+        return jdbcTemplate.query("Select c.courseid, c.name as title, c.description, concat(u.firstname,' ', u.lastname) as trainer from course c left join \"user\" u on c.trainerid = u.userid;",BeanPropertyRowMapper.newInstance(Course.class));
     }
 
     /**
@@ -80,8 +83,12 @@ public class CourseRepository {
      * @return łańcuch znaków "Zapisano" gdy zapisanie się powiedzie
      */
     public String enroll(int userid, int courseid){
-        //TODO.txt check if enrolled != maxEnrolled
-        jdbcTemplate.execute(String.format("Insert into enrolled values(%d,%d)",courseid, userid));
+        int maxenrolled = jdbcTemplate.queryForObject(String.format("Select maxenrolled from course where courseid = 1;", courseid), Integer.class);
+        int enrolled = jdbcTemplate.queryForObject(String.format("Select count(userid) from enrolled where courseid = %d;", courseid), Integer.class);
+        if(enrolled == maxenrolled){
+            return "Brak miejsc";
+        }
+        jdbcTemplate.execute(String.format("Insert into enrolled values(%d, %d)",courseid, userid));
         return "Zapisano";
     }
 

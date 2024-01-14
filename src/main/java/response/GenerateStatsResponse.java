@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GenerateStatsResponse {
-    int avgUsers;
-    int avgTime;
-    int newUsers;
+    double avgUsers;
+    String avgTime;
     int users;
+    int newusers;
 }

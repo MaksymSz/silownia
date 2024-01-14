@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewCourseRequest {
-    int trenerId;
     String title;
+    String weekday;
     String description;
-    String date;
     String startingTime;
     String endingTime;
     int trainingRoomid;
     int maxEnrolled;
+    int trainerid;
 }

@@ -1,5 +1,6 @@
 package gym55.gym55.controller;
 
+import gym55.gym55.tableObjects.Login;
 import gym55.gym55.tableObjects.Training;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,11 +32,13 @@ public class StatsController {
         List<Training> data = statsRepository.getTrainings(id);
         return ResponseEntity.ok().body(new HashMap<>(){{put("data", data);}});}
 
-    //TODO.txt endpoint /generate - brakuje w DB
+
+    @CrossOrigin
+    @PostMapping("/generate")
     @ResponseBody
-    public GenerateStatsResponse generateStats(GenerateStatsRequest generateStatsRequest){
-        //statsRepository
-        return new GenerateStatsResponse();
+    public ResponseEntity<GenerateStatsResponse> generateStats(@RequestBody GenerateStatsRequest generateStatsRequest){
+        GenerateStatsResponse report = statsRepository.generate(generateStatsRequest.getFrom(), generateStatsRequest.getTo());
+        return ResponseEntity.ok().body(report);
     }
 }
 

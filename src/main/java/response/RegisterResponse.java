@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterResponse {
+    String email;
+    String password;
     String name;
-    String gymPass;
-    int id;
-    String role;
-    String token;
+    String surname;
 }

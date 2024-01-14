@@ -24,11 +24,12 @@ public class UserController {
     @Autowired
     StatsRepository statsRepository;
 
+
     @CrossOrigin
     @PostMapping("/login")
     @ResponseBody
     ResponseEntity<Login> login(@RequestBody Credentials credentials) throws NoSuchAlgorithmException {
-        String token = this.generateToken(credentials.getEmail());
+        String token = generateToken(credentials.getEmail());
         User user = userRepository.getUser(userRepository.checkLogin(credentials));
         return ResponseEntity.ok().body(new Login(user, token));
     }
@@ -38,8 +39,8 @@ public class UserController {
     @ResponseBody
     public RegisterResponse registerUser(@RequestBody RegisterRequest registerRequest) throws NoSuchAlgorithmException {
         User user = userRepository.addUser(registerRequest.getName(), registerRequest.getSurname(), registerRequest.getEmail(), registerRequest.getPassword(), "user");
-        String token = this.generateToken(user.getLogin());
-        return new RegisterResponse(user.getName(), null, user.getUserId(), user.getClass_(), token);
+        String token = this.generateToken(registerRequest.getEmail());
+        return new RegisterResponse(registerRequest.getEmail(), registerRequest.getPassword(), registerRequest.getName(), registerRequest.getSurname());
     }
 
 

@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import request.GenerateStatsRequest;
+import response.GenerateStatsResponse;
 
 import java.util.List;
 /**
@@ -58,11 +60,12 @@ public class StatsRepository {
                 "where userid=%d and endingtime is null",time, userid));
     }
 
-    //TODO.txt Dorobić zapytania do endpointu /generate -> To jest wymagane:
-    //  from / to (String) : Daty włącznie.
-    //  ==================================
-    //  avgUsers (numer): Średnia liczba klientów na dzień
-    //  avgTime (numer): Średni czas spędzony przez jednego klienta w ciągu dnia
-    //  newUsers (numer): Liczba nowych klientów w okresie
-    //  users (numer): Liczba użytkowników z aktywnym karnetem
+    public GenerateStatsResponse generate(String from, String to){
+        return jdbcTemplate.queryForObject(String.format("Select count(userid)/(date_part('day', '%s'::date) \n" +
+                "- date_part('day', '%s'::date)) as avgusers, \n" +
+                "avg(endingtime - startingtime) as avgtime, count(distinct userid) as users,\n" +
+                "(Select count(userid) from \"user\" where registrationdate between '%s' and '%s') as newusers\n" +
+                "from training \n" +
+                "where trainingdate between '%s' and '%s';", to, from, from, to, from, to), BeanPropertyRowMapper.newInstance(GenerateStatsResponse.class));
+    }
 }
