@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Klasa zawierająca endpointy dotyczące zarządzania kursami
+ */
 @RestController
 public class CourceController {
     @Autowired
@@ -42,6 +45,11 @@ public class CourceController {
         return coursesResponse;
     }
 
+    /**
+     * Endpoint, który pozwala zapisać się na kurs
+     * @param enrollRequest - id użytkownika
+     * @return id użytkownika i kursu jako informacja o pomyślnym zapisaniu
+     */
     @CrossOrigin
     @PutMapping("/enroll")
     @ResponseBody
@@ -50,6 +58,11 @@ public class CourceController {
         return ResponseEntity.ok().body(new TextResponse(response));
     }
 
+    /**
+     * Endpoint obsługujący dodanie nowego kursu
+     * @param newCourseRequest Dane o kursie
+     * @return Tekstową odpowiedź o pomyślnym dodaniu kursu
+     */
     @CrossOrigin
     @PostMapping("/newcourse")
     @ResponseBody

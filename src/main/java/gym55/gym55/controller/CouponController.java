@@ -1,5 +1,7 @@
 package gym55.gym55.controller;
-
+/**
+ * Pakiet kontrolujący endpointy
+ */
 import gym55.gym55.repository.CouponRepository;
 import gym55.gym55.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import response.TextResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Klasa zawierająca endpointy związane z zarządzaniem kuponami
+ */
 @RestController
 public class CouponController {
     @Autowired
@@ -18,6 +23,11 @@ public class CouponController {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * Endpoint, który symuluje użycie kuponu
+     * @param useCuponRequest dane kuponu wpisane przez użytkownika
+     * @return Odpowiedź odnośnie sukcesu bądź braku sukcesu operacji
+     */
     @CrossOrigin
     @PostMapping("/coupon")
     @ResponseBody

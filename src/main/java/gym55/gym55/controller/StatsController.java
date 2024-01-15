@@ -15,11 +15,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Klasa obsługująca endpointy związane ze statystykami
+ */
 @RestController
 public class StatsController {
     @Autowired
     StatsRepository statsRepository;
 
+    /**
+     * Metoda określająca ilość osób na siłowni
+     * @return ilość osób na siłowni
+     */
     @GetMapping("/ingym")
     public Map<String, Integer> inGym(){
         Map<String, Integer> response = new HashMap<>();
@@ -27,6 +34,11 @@ public class StatsController {
         return response;
     }
 
+    /**
+     * Metoda zwracająca statystyki użytkownika z ostatnich dni
+     * @param id id użytkownika
+     * @return lista treningów
+     */
     @GetMapping("/dashboard/{id}")
     public ResponseEntity<HashMap<Object, Object>> getDashboard(@PathVariable("id") int id){
         List<Training> data = statsRepository.getTrainings(id);

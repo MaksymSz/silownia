@@ -11,11 +11,19 @@ import gym55.gym55.repository.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Klasa obsługująca operacje związane z raportem
+ */
 @RestController
 public class ReportController {
     @Autowired
     ReportRepository reportRepository;
 
+    /**
+     * Endpoint obsługujący dodanie raportu do bazy danych
+     * @param reportProblemRequest dane o raporcie
+     * @return tekstową informację o pomyślnym lub nie zakończeniu operacji
+     */
     @GetMapping("/report")
     @ResponseBody
     public Map<String, String> reportProblem(ReportProblemRequest reportProblemRequest){

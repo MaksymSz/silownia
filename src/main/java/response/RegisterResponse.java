@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Klasa obsługująca odpowiedzi backendu na requesty rest api dotyczące rejestracji
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

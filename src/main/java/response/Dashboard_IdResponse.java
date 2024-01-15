@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasa obsługująca odpowiedzi backendu na requesty rest api dotyczące statystyk
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

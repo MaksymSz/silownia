@@ -5,12 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Klasa obsługująca requesty rest api odnośnie użycia kuponu
+ * Klasa obsługująca requesty rest api odnośnie kodu qr
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class UseCuponRequest {
+@AllArgsConstructor
+public class QrRequest {
     int id;
-    String coupon;
 }

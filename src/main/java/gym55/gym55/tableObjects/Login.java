@@ -17,7 +17,7 @@ public class Login {
     public Login(User user, String token){
         this.name = user.getFirstName();
         this.gymPass = "2024-11-10";
-        this.role = "client";
+        this.role = user.getClass_();
         this.id = user.getUserId();
         this.token = token;
     }
