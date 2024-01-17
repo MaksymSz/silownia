@@ -87,10 +87,9 @@ public class UserController {
     @CrossOrigin
     @PostMapping("/newqr")
     @ResponseBody
-    ResponseEntity<QrResponse> login(@RequestBody QrRequest qrRequest) throws NoSuchAlgorithmException {
-        Random rand = new Random();
-        String s = String.valueOf(rand.nextInt(100));
-        return ResponseEntity.ok().body(new QrResponse(s));
+    ResponseEntity<QrResponse> login(@RequestBody QrRequest qrRequest) {
+        userRepository.newQr(qrRequest.getId());
+        return ResponseEntity.ok().body(new QrResponse());
     }
 
     /**
@@ -100,8 +99,8 @@ public class UserController {
      */
     @GetMapping("/qr/{id}")
     public ResponseEntity<QrResponse> getDashboard(@PathVariable("id") int id) {
-        Random rand = new Random();
-        String s = String.valueOf(rand.nextInt(100));
-        return ResponseEntity.ok().body(new QrResponse(s));
+        int x = userRepository.qr(id);
+        String y = String.valueOf(x);
+        return ResponseEntity.ok().body(new QrResponse(y));
     }
 }

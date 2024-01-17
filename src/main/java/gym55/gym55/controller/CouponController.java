@@ -37,7 +37,7 @@ public class CouponController {
 
         if(check >= 1){
             userRepository.extendMembership(useCuponRequest.getId());
-            response = "Zrealizowano";}
+            response = "2024-12-10";}
         else{
             response = "Zły kod kuponu";
         }

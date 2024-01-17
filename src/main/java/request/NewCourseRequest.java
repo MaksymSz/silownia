@@ -18,5 +18,5 @@ public class NewCourseRequest {
     String endingTime;
     int trainingRoomid;
     int maxEnrolled;
-    int trainerid;
+    int id;
 }

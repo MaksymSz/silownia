@@ -11,5 +11,5 @@ public class GenerateStatsResponse {
     double avgUsers;
     String avgTime;
     int users;
-    int newusers;
+    int newUsers;
 }

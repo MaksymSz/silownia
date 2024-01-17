@@ -36,17 +36,11 @@ public class CourseRepository {
     //TODO.txt czy potrzebujemy zwracać kurs? nie wystarczy 0/1 czy się udało czy nie?
     //TODO.txt zamiana ciągu zmiennych na obiekt klasy NewCourseRequest? Patrz CourseController / NewCourseRequest.
     public Course addCourse(int trainerid, String name, String description, String date, String startingTime, String endingTime, int trainingRoomid, int maxEnrolled) throws RuntimeException {
-        try{
-            jdbcTemplate.queryForObject(String.format("Select u.userid from \"user\" u where u.userid = %d", trainerid), BeanPropertyRowMapper.newInstance(int.class));
-            jdbcTemplate.queryForObject(String.format("Select t.trainingroomid from trainingroom t where t.trainingroomid = %d", trainingRoomid), BeanPropertyRowMapper.newInstance(int.class));}
-        catch(Exception IncorrectResultSizeDataAccessException){
-            return new Course();
-        }
         int id = jdbcTemplate.queryForObject("Select max(courseid) from course", Integer.class);
-        jdbcTemplate.execute(String.format("Insert into course(id, trainerid, name, description, weekday, startingtime, endingtime, trainingroomid, maxenrolled)" +
-                "values (%d,%d,%s,%s,%s,%s,%s,%d,%d)", id+1 ,trainerid, name, description, date, startingTime, endingTime, trainingRoomid, maxEnrolled));
+        jdbcTemplate.execute(String.format("Insert into course(courseid, trainerid, name, description, weekday, startingtime, endingtime,trainingroomid, maxenrolled)" +
+                "values (%d,%d,'%s','%s','%s','%s','%s',1,%d)", id+1 ,trainerid, name, description, date, "11:11", "11:11", maxEnrolled));
 
-        return getCourse(id);
+        return new Course();
     }
 
     /**

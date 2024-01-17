@@ -98,6 +98,13 @@ public class UserRepository {
         return jdbcTemplate.queryForObject("Select max(userid) from \"user\"", Integer.class);
     }
 
+    public void newQr(int id) {
+        jdbcTemplate.execute(String.format("Update \"user\" set userkey = userkey + 1 where userid = %d", id));
+    }
+
+    public int qr(int id){
+        return jdbcTemplate.queryForObject(String.format("Select u.userkey from \"user\" u where u.userid=%d", id), Integer.class);
+    }
 
 
 

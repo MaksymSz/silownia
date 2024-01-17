@@ -28,6 +28,8 @@ public class CourceController {
     @Autowired
     UserRepository userRepository;
 
+
+
     /**
      * Funkcja zwraca wszystkie kursy
      *
@@ -68,7 +70,7 @@ public class CourceController {
     @ResponseBody
     public ResponseEntity<TextResponse> newCourse(@RequestBody NewCourseRequest newCourseRequest) {
         Course course = courseRepository.addCourse(
-                newCourseRequest.getTrainerid(),
+                newCourseRequest.getId(),
                 newCourseRequest.getTitle(),
                 newCourseRequest.getDescription(),
                 newCourseRequest.getWeekday(),

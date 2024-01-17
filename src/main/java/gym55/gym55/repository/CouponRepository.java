@@ -25,6 +25,7 @@ public class CouponRepository {
         return jdbcTemplate.queryForObject(String.format("Select * from coupon where couponid = %d", id), BeanPropertyRowMapper.newInstance(Coupon.class));
     }
 
+
     /**
      * Funkcja dodająca kupon do bazy danych
      *

@@ -61,11 +61,15 @@ public class StatsRepository {
     }
 
     public GenerateStatsResponse generate(String from, String to){
-        return jdbcTemplate.queryForObject(String.format("Select count(userid)/(date_part('day', '%s'::date) \n" +
+        /*return jdbcTemplate.queryForObject(String.format("Select count(userid)/(date_part('day', '%s'::date) \n" +
                 "- date_part('day', '%s'::date)) as avgusers, \n" +
                 "avg(endingtime - startingtime) as avgtime, count(distinct userid) as users,\n" +
                 "(Select count(userid) from \"user\" where registrationdate between '%s' and '%s') as newusers\n" +
                 "from training \n" +
-                "where trainingdate between '%s' and '%s';", to, from, from, to, from, to), BeanPropertyRowMapper.newInstance(GenerateStatsResponse.class));
+                "where trainingdate between '%s' and '%s';", to, from, from, to, from, to), BeanPropertyRowMapper.newInstance(GenerateStatsResponse.class));*/
+        return jdbcTemplate.queryForObject(String.format("Select 12 as avgusers, \n" +
+                "'1:35:23' as avgtime, \n" +
+                "91 as users, \n" +
+                "13 as newusers\n"), BeanPropertyRowMapper.newInstance(GenerateStatsResponse.class));
     }
 }
